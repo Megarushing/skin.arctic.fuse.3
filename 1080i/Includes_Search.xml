@@ -34,6 +34,19 @@
                                     <include>Search_Bar_Edit</include>
                                     <include>Search_Bar_Icon</include>
                                     <include>Search_Bar_Keys</include>
+                                    <!-- Show a loading spinner while search containers update. -->
+                                    <control type="image">
+                                        <left>820</left>
+                                        <centertop>50%</centertop>
+                                        <width>40</width>
+                                        <height>40</height>
+                                        <aspectratio>keep</aspectratio>
+                                        <texture colordiffuse="main_fg_70">special://skin/extras/icons/update.png</texture>
+                                        <animation effect="rotate" start="0" end="-360" time="1200" loop="true" center="auto" condition="true">Conditional</animation>
+                                        <animation effect="fade" start="0" end="100" time="200">Visible</animation>
+                                        <animation effect="fade" start="100" end="0" time="200">Hidden</animation>
+                                        <visible>Container(502).IsUpdating | Container(503).IsUpdating | Container(504).IsUpdating | Container(505).IsUpdating | Container(506).IsUpdating | Container(507).IsUpdating | Container(508).IsUpdating</visible>
+                                    </control>
                                 </control>
                                 <include condition="!Skin.HasSetting(HomeSwitcher.Vertical)">Home_Switcher_Right_Buttons</include>
                             </control>
