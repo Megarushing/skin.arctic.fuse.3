@@ -180,17 +180,18 @@
                     <onfocus condition="![$PARAM[home_switcher]]">ClearProperty(HomeSwitcher.IsVisible,Home)</onfocus>
                     <onfocus condition="$PARAM[home_switcher]">SetProperty(HomeSwitcher.IsVisible,True,Home)</onfocus>
                     <content>
-                        <item>
-                            <label>$LOCALIZE[31066]</label>
-                            <label2>$INFO[Window(Home).Property(TMDbHelper.UserDiscover.FolderPath.Name), ,]</label2>
-                            <icon>special://skin/extras/icons/binoculars.png</icon>
-                            <property name="mode">discover</property>
-                        </item>
+                        <!-- Open Search before Discover in the search mode selector. -->
                         <item>
                             <label>$LOCALIZE[137]</label>
                             <label2>$VAR[Search_Label_Results]</label2>
                             <icon>special://skin/extras/icons/chart-simple.png</icon>
                             <property name="mode">search</property>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[31066]</label>
+                            <label2>$INFO[Window(Home).Property(TMDbHelper.UserDiscover.FolderPath.Name), ,]</label2>
+                            <icon>special://skin/extras/icons/binoculars.png</icon>
+                            <property name="mode">discover</property>
                         </item>
                         <item>
                             <label>$LOCALIZE[31155]</label>
