@@ -60,7 +60,7 @@
             </include>
             <include content="Info_Meta_Object" condition="Skin.String(CustomRating.$PARAM[content].$PARAM[item],Trakt)">
                 <param name="icon">flags/$VAR[Color_Directory]/ratings/trakt.png</param>
-                <param name="label">$INFO[Window(Home).Property(TMDbHelper.$PARAM[service].Trakt_Rating)]</param>
+                <param name="label">$INFO[Window(Home).Property(TMDbHelper.$PARAM[service].Trakt_Rating)]$INFO[Window(Home).Property(TMDbHelper.$PARAM[service].Trakt_Votes), (,)]</param><!-- Show Trakt vote counts beside ratings. -->
                 <param name="visible">[$PARAM[visible]] + !String.IsEmpty(Window(Home).Property(TMDbHelper.$PARAM[service].Trakt_Rating))</param>
                 <param name="colordiffuse">$PARAM[colordiffuse]</param>
             </include>
