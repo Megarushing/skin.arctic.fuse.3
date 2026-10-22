@@ -188,10 +188,16 @@
                             <property name="mode">search</property>
                         </item>
                         <item>
-                            <label>$LOCALIZE[31066]</label>
+                            <label>TMDb Discover</label>
                             <label2>$INFO[Window(Home).Property(TMDbHelper.UserDiscover.FolderPath.Name), ,]</label2>
                             <icon>special://skin/extras/icons/binoculars.png</icon>
                             <property name="mode">discover</property>
+                        </item>
+                        <item>
+                            <label>Trakt Discover</label>
+                            <label2>$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path.Name), ,]</label2>
+                            <icon>special://skin/extras/icons/binoculars.png</icon>
+                            <property name="mode">trakt-discover</property>
                         </item>
                         <item>
                             <label>$LOCALIZE[31155]</label>
@@ -247,8 +253,9 @@
                             <param name="altfocusid">691</param>
                             <param name="hidden_button">List_ButtonMenu_Row_HiddenButton_ERow</param>
                             <param name="hidden_button_enabled">true</param>
-                            <param name="onclick_condition">!String.IsEqual(Container(601).ListItem.Property(guid),discover)</param>
+                            <param name="onclick_condition">!String.IsEqual(Container(601).ListItem.Property(guid),discover) + !String.IsEqual(Container(601).ListItem.Property(guid),trakt-discover)</param>
                             <onclick condition="String.IsEqual(Container(601).ListItem.Property(guid),discover)">RunPlugin(plugin://plugin.video.themoviedb.helper/?info=user_discover$INFO[Window(Home).Property(TMDbHelper.UserDiscover.Folderpath.ParamString),&amp;,])</onclick>
+                            <onclick condition="String.IsEqual(Container(601).ListItem.Property(guid),trakt-discover)">RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path.ParamString),&amp;,])</onclick>
                             <onup>301</onup>
                             <onback condition="!Player.HasMedia">301</onback>
                             <onback condition="Player.HasMedia">SetProperty(FullscreenRefocus,SetFocus(601))</onback>
@@ -343,6 +350,9 @@
             <include content="Search_Info" condition="!Skin.HasSetting(Search.DisableDiscover) + !String.IsEqual(Skin.String(HomeSwitcher.Search.Mode),Standard)">
                 <param name="id">501</param>
             </include>
+            <include content="Search_Info" condition="!Skin.HasSetting(Search.DisableDiscover) + !String.IsEqual(Skin.String(HomeSwitcher.Search.Mode),Standard)">
+                <param name="id">555</param>
+            </include>
             <include>skinvariables-searchwidgets-info</include>
 
             <include content="Search_Info" condition="!Skin.HasSetting(Search.DisableDiscover) + !String.IsEqual(Skin.String(HomeSwitcher.Search.Mode),Standard)">
@@ -376,6 +386,14 @@
                 <param name="include">$PARAM[include]</param>
                 <param name="target">videos</param>
                 <param name="visible">String.IsEqual(Container(601).ListItem.Property(guid),discover)</param>
+                <param name="allowhiddenfocus">true</param>
+            </include>
+            <include content="$PARAM[include_widget]" condition="!Skin.HasSetting(Search.DisableDiscover)">
+                <param name="id">555</param>
+                <param name="content">$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path)]$INFO[Control.GetLabel(3000).index(1),&amp;query=,]</param>
+                <param name="include">$PARAM[include]</param>
+                <param name="target">videos</param>
+                <param name="visible">String.IsEqual(Container(601).ListItem.Property(guid),trakt-discover)</param>
                 <param name="allowhiddenfocus">true</param>
             </include>
             <include>$PARAM[include_search]</include>
@@ -508,6 +526,28 @@
             <visible>String.IsEqual(Container(3003).ListItem.Property(mode),discover)</visible>
             <visible>Container(501).IsUpdating</visible>
         </item>
+        <item>
+            <label>$LOCALIZE[587]</label>
+            <label2>$INFO[Container(555).NumItems, (,)]</label2>
+            <property name="guid">trakt-discover</property>
+            <property name="widget_id">$NUMBER[555]</property>
+            <property name="show_artwork">true</property>
+            <property name="widget_numitems">$INFO[Container(555).NumItems]</property>
+            <onclick>RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path.ParamString),&amp;,])</onclick>
+            <visible>String.IsEqual(Container(3003).ListItem.Property(mode),trakt-discover)</visible>
+            <visible>!Container(555).IsUpdating</visible>
+        </item>
+        <item>
+            <label>$LOCALIZE[587]</label>
+            <label2> ($LOCALIZE[31272]...)</label2>
+            <property name="guid">trakt-discover</property>
+            <property name="widget_id">$NUMBER[555]</property>
+            <property name="show_artwork">true</property>
+            <property name="widget_numitems">$INFO[Container(555).NumItems]</property>
+            <onclick>RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path.ParamString),&amp;,])</onclick>
+            <visible>String.IsEqual(Container(3003).ListItem.Property(mode),trakt-discover)</visible>
+            <visible>Container(555).IsUpdating</visible>
+        </item>
         <include>skinvariables-searchwidgets-combined-selector</include>
         <include content="Search_Switcher_Discover_Items_Extended">
             <param name="id">0</param>
@@ -536,6 +576,7 @@
             <property name="widget_numitems">$INFO[Container(55$PARAM[id]).NumItems]</property>
 
             <visible>!String.IsEqual(Container(3003).ListItem.Property(mode),discover)</visible>
+            <visible>!String.IsEqual(Container(3003).ListItem.Property(mode),trakt-discover)</visible>
             <visible>!String.IsEqual(Container(3003).ListItem.Property(mode),search)</visible>
 
             <visible>!Container(55$PARAM[id]).IsUpdating</visible>
@@ -551,6 +592,7 @@
             <property name="widget_numitems">$INFO[Container(55$PARAM[id]).NumItems]</property>
 
             <visible>!String.IsEqual(Container(3003).ListItem.Property(mode),discover)</visible>
+            <visible>!String.IsEqual(Container(3003).ListItem.Property(mode),trakt-discover)</visible>
             <visible>!String.IsEqual(Container(3003).ListItem.Property(mode),search)</visible>
 
             <visible>Container(55$PARAM[id]).IsUpdating</visible>
