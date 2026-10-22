@@ -1260,7 +1260,13 @@
     </variable>
 
     <!-- Resolve video titles and hide routine playing status. -->
+    <variable name="Label_MJ_OSD_EpisodeNumber">
+        <value condition="Integer.IsLess(VideoPlayer.Episode,10)">$INFO[VideoPlayer.Episode,0,]</value>
+        <value>$INFO[VideoPlayer.Episode]</value>
+    </variable>
     <variable name="Label_MJ_OSD_VideoTitle">
+        <value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + !String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode) + !String.IsEmpty(VideoPlayer.Title) + String.IsEmpty(VideoPlayer.ChannelNumberLabel)">$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[VideoPlayer.Season,,x]$VAR[Label_MJ_OSD_EpisodeNumber]$INFO[VideoPlayer.Title,. ,]</value>
+        <value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + !String.IsEmpty(VideoPlayer.Title) + String.IsEmpty(VideoPlayer.ChannelNumberLabel)">$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[VideoPlayer.Title]</value>
         <value condition="!String.IsEmpty(VideoPlayer.Title)">$INFO[VideoPlayer.Title]</value>
         <value condition="!String.IsEmpty(Player.Title)">$INFO[Player.Title]</value>
         <value>$INFO[Player.Filename]</value>
