@@ -255,7 +255,7 @@
                             <param name="hidden_button_enabled">true</param>
                             <param name="onclick_condition">!String.IsEqual(Container(601).ListItem.Property(guid),discover) + !String.IsEqual(Container(601).ListItem.Property(guid),trakt-discover)</param>
                             <onclick condition="String.IsEqual(Container(601).ListItem.Property(guid),discover)">RunPlugin(plugin://plugin.video.themoviedb.helper/?info=user_discover$INFO[Window(Home).Property(TMDbHelper.UserDiscover.Folderpath.ParamString),&amp;,])</onclick>
-                            <onclick condition="String.IsEqual(Container(601).ListItem.Property(guid),trakt-discover)">RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path.ParamString),&amp;,])</onclick>
+                            <onclick condition="String.IsEqual(Container(601).ListItem.Property(guid),trakt-discover)">RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover&amp;use_winprops=true)</onclick>
                             <onup>301</onup>
                             <onback condition="!Player.HasMedia">301</onback>
                             <onback condition="Player.HasMedia">SetProperty(FullscreenRefocus,SetFocus(601))</onback>
@@ -533,7 +533,7 @@
             <property name="widget_id">$NUMBER[555]</property>
             <property name="show_artwork">true</property>
             <property name="widget_numitems">$INFO[Container(555).NumItems]</property>
-            <onclick>RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path.ParamString),&amp;,])</onclick>
+            <onclick>RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover&amp;use_winprops=true)</onclick>
             <visible>String.IsEqual(Container(3003).ListItem.Property(mode),trakt-discover)</visible>
             <visible>!Container(555).IsUpdating</visible>
         </item>
@@ -544,7 +544,7 @@
             <property name="widget_id">$NUMBER[555]</property>
             <property name="show_artwork">true</property>
             <property name="widget_numitems">$INFO[Container(555).NumItems]</property>
-            <onclick>RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover$INFO[Window(Home).Property(TMDbHelper.TraktDiscover.Path.ParamString),&amp;,])</onclick>
+            <onclick>RunPlugin(plugin://plugin.video.themoviedb.helper/?info=trakt_discover&amp;use_winprops=true)</onclick>
             <visible>String.IsEqual(Container(3003).ListItem.Property(mode),trakt-discover)</visible>
             <visible>Container(555).IsUpdating</visible>
         </item>
