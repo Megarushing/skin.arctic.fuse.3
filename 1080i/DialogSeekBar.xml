@@ -31,12 +31,40 @@
 
                         <control type="group">
                             <include>OSD_HideControls</include>
+                            <!-- Keep the video title above progress with a separate status line. -->
+                            <control type="group">
+                                <visible>Player.HasVideo</visible>
+                                <left>view_pad</left>
+                                <right>view_pad</right>
+                                <control type="label" id="8291">
+                                    <width>100%</width>
+                                    <top>764</top>
+                                    <height>48</height>
+                                    <aligny>center</aligny>
+                                    <font>font_midi_bold</font>
+                                    <textcolor>panel_fg_90</textcolor>
+                                    <scroll>true</scroll>
+                                    <label>$VAR[Label_MJ_OSD_VideoTitle]</label>
+                                </control>
+                                <control type="label" id="8292">
+                                    <width>100%</width>
+                                    <top>818</top>
+                                    <height>40</height>
+                                    <aligny>center</aligny>
+                                    <font>font_main</font>
+                                    <textcolor>panel_fg_70</textcolor>
+                                    <label>$VAR[Label_OSD_Header]</label>
+                                </control>
+                            </control>
+                            <control type="group">
+                                <visible>!Player.HasVideo</visible>
                             <include content="Furniture_Header">
                                 <param name="label">$VAR[Label_OSD_Header]</param>
                                 <param name="include_right">false</param>
                                 <param name="textcolor">panel_fg_90</param>
                                 <param name="top">780</param>
                             </include>
+                            </control>
                         </control>
                     </control>
 
