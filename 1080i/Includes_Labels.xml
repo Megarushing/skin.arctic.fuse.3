@@ -611,6 +611,8 @@
         <value condition="Player.Rewinding4x">RW 4x</value>
         <value condition="Player.Rewinding2x">RW 2x</value>
         <value condition="Player.Rewinding">RW</value>
+        <!-- Prefer pending seek size over completed seek offsets. -->
+        <value condition="Player.Seeking + !String.IsEmpty(Player.SeekStepSize)">$LOCALIZE[773]$INFO[Player.SeekStepSize, ,]</value>
         <value condition="[Player.Seeking | Player.HasPerformedSeek(3)] + !String.IsEmpty(Player.SeekOffset)">$LOCALIZE[773]$INFO[Player.SeekOffset, ,]</value>
         <value condition="Player.Seeking + String.IsEmpty(Player.SeekOffset)">$LOCALIZE[773]$INFO[Player.SeekStepSize, ,]</value>
         <value condition="Player.Caching">$LOCALIZE[439] $INFO[Player.CacheLevel,,%]</value>
@@ -1067,6 +1069,8 @@
         <value condition="Player.Rewinding4x">RW 4x</value>
         <value condition="Player.Rewinding2x">RW 2x</value>
         <value condition="Player.Rewinding">RW</value>
+        <!-- Prefer pending seek size over completed seek offsets. -->
+        <value condition="Player.Seeking + !String.IsEmpty(Player.SeekStepSize)">$LOCALIZE[773]$INFO[Player.SeekStepSize, ,]</value>
         <value condition="[Player.Seeking | Player.HasPerformedSeek(2)] + !String.IsEmpty(Player.SeekOffset)">$LOCALIZE[773]$INFO[Player.SeekOffset, ,]</value>
         <value condition="Player.Seeking + String.IsEmpty(Player.SeekOffset)">$LOCALIZE[773]$INFO[Player.SeekStepSize, ,]</value>
         <value condition="Player.Caching">$LOCALIZE[439] $INFO[Player.CacheLevel,,%]</value>
