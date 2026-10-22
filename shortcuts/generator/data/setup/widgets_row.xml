@@ -223,6 +223,39 @@
             <condition>{item_path}&lt;&lt;plugin://script.skinvariables/?info=get_params_file</condition>
             <value>True</value>
         </rule>
+        <!-- Preserve dynamic titles for Trakt-token-gated widget rows. -->
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=random_genres</condition>
+            <value>True</value>
+        </rule>
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=random_keyword</condition>
+            <value>True</value>
+        </rule>
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=random_trendinglists</condition>
+            <value>True</value>
+        </rule>
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=random_popularlists</condition>
+            <value>True</value>
+        </rule>
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=random_likedlists</condition>
+            <value>True</value>
+        </rule>
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=random_mylists</condition>
+            <value>True</value>
+        </rule>
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=trakt_becauseyouwatched</condition>
+            <value>True</value>
+        </rule>
+        <rule>
+            <condition>{item_path}&lt;&lt;$INFO[Window(Home).Property(TraktHub.Ready),plugin://plugin.video.themoviedb.helper/?hub=,&amp;]info=trakt_becausemostwatched</condition>
+            <value>True</value>
+        </rule>
         <rule>
             <condition>True</condition>
             <value>False</value>
