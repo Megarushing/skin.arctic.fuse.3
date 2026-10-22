@@ -37,7 +37,8 @@
                             <onclick>PlayerControl(Play)</onclick>
                             <onfocus condition="Player.Forwarding | Player.Rewinding">PlayerControl(Play)</onfocus>
                             <onunfocus condition="Player.Forwarding | Player.Rewinding">PlayerControl(Play)</onunfocus>
-                            <onup>8200</onup>
+                            <onup condition="Pvr.IsPlayingTv">8200</onup>
+                            <onup condition="!Pvr.IsPlayingTv">8202</onup>
                         </control>
                         <include content="OSD_Button_Icon_Overlay">
                             <param name="icon">$VAR[Image_OSD_PlayPause]</param>
@@ -53,7 +54,8 @@
                             <onclick condition="VideoPlayer.Content(livetv)">Close</onclick>
                             <onclick condition="VideoPlayer.Content(livetv)">ActivateWindow(TVGuide)</onclick>
                             <onclick condition="!VideoPlayer.Content(livetv)">$VAR[Action_OSD_SkipPrev]</onclick>
-                            <onup>8200</onup>
+                            <onup condition="Pvr.IsPlayingTv">8200</onup>
+                            <onup condition="!Pvr.IsPlayingTv">8202</onup>
                         </control>
                         <include content="OSD_Button_Icon_Overlay" condition="!VideoPlayer.Content(livetv)">
                             <param name="icon">$VAR[Image_OSD_SkipPrev]</param>
@@ -72,7 +74,8 @@
                         <control type="button" id="6003">
                             <include>Defs_OSD_Button</include>
                             <onclick condition="VideoPlayer.Content(livetv)">PVR.ToggleRecordPlayingChannel</onclick>
-                            <onup>8200</onup>
+                            <onup condition="Pvr.IsPlayingTv">8200</onup>
+                            <onup condition="!Pvr.IsPlayingTv">8202</onup>
                             <onfocus condition="!VideoPlayer.Content(livetv)">ActivateWindow(1143)</onfocus>
                             <enable>PVR.CanRecordPlayingChannel | !VideoPlayer.Content(livetv)</enable>
                             <label>$VAR[Label_OSD_PVR_Recording]</label>
@@ -96,7 +99,8 @@
                             <include>Defs_OSD_Button</include>
                             <onclick>CancelAlarm(osd_timeout,true)</onclick>
                             <onclick>PlayerControl(Stop)</onclick>
-                            <onup>8200</onup>
+                            <onup condition="Pvr.IsPlayingTv">8200</onup>
+                            <onup condition="!Pvr.IsPlayingTv">8202</onup>
                         </control>
                         <include content="OSD_Button_Icon_Overlay">
                             <param name="icon">special://skin/extras/icons/stop.png</param>
@@ -200,7 +204,7 @@
                         <lefttexture />
                         <midtexture />
                         <info>Player.Progress</info>
-                        <visible>Control.HasFocus(8200)</visible>
+                        <visible>Control.HasFocus(8200) | [Control.HasFocus(8202) + !Player.Seeking]</visible>
                         <visible>!Pvr.IsPlayingTv</visible>
                     </control>
                     <control type="progress">
@@ -211,6 +215,19 @@
                         <info>PVR.EpgEventProgress</info>
                         <visible>Control.HasFocus(8200)</visible>
                         <visible>Pvr.IsPlayingTv</visible>
+                    </control>
+                    <!-- Preview staged remote seeks while preserving mouse and live TV controls. -->
+                    <control type="button" id="8202">
+                        <left>-3000</left>
+                        <top>-3000</top>
+                        <width>1</width>
+                        <height>1</height>
+                        <texturefocus />
+                        <texturenofocus />
+                        <visible>!Pvr.IsPlayingTv</visible>
+                        <onleft>StepBack</onleft>
+                        <onright>StepForward</onright>
+                        <ondown>6091</ondown>
                     </control>
                     <control type="slider" id="8200">
                         <info>Player.Progress</info>
