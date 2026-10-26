@@ -217,7 +217,7 @@
             ]
         },
         {
-            "rules": ["!Window.IsVisible(LoginScreen.xml)", "Window.IsActive(Startup.xml)"],
+            "rules": ["!Window.IsVisible(LoginScreen.xml)"],
             "value": "{ReplaceWindowCommand}"
         }
     ]
