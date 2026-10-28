@@ -31,14 +31,14 @@
 
                         <control type="group">
                             <include>OSD_HideControls</include>
-                            <!-- Keep the video title above progress with a separate status line. -->
+                            <!-- Status, title and filename stay above the unchanged progress bar. -->
                             <control type="group">
                                 <visible>Player.HasVideo</visible>
                                 <left>view_pad</left>
                                 <right>view_pad</right>
                                 <control type="label" id="8291">
                                     <width>100%</width>
-                                    <top>810</top>
+                                    <top>764</top>
                                     <height>48</height>
                                     <aligny>center</aligny>
                                     <font>font_midi_bold</font>
@@ -48,12 +48,23 @@
                                 </control>
                                 <control type="label" id="8292">
                                     <width>100%</width>
-                                    <top>764</top>
+                                    <top>718</top>
                                     <height>40</height>
                                     <aligny>center</aligny>
                                     <font>font_main</font>
                                     <textcolor>panel_fg_70</textcolor>
                                     <label>$VAR[Label_OSD_Header]</label>
+                                </control>
+                                <control type="label" id="8293">
+                                    <visible>!String.IsEmpty(Player.Filename)</visible>
+                                    <width>100%</width>
+                                    <top>818</top>
+                                    <height>40</height>
+                                    <aligny>center</aligny>
+                                    <font>font_main</font>
+                                    <textcolor>panel_fg_70</textcolor>
+                                    <scroll>true</scroll>
+                                    <label>$INFO[Player.Filename]</label>
                                 </control>
                             </control>
                             <control type="group">
