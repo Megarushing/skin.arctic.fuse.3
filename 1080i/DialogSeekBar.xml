@@ -64,7 +64,7 @@
                                     <font>font_main</font>
                                     <textcolor>panel_fg_70</textcolor>
                                     <scroll>true</scroll>
-                                    <label>$INFO[Player.Filename]</label>
+                                    <label>$VAR[Label_OSD_Filename]</label>
                                 </control>
                             </control>
                             <control type="group">

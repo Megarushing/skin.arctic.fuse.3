@@ -596,6 +596,12 @@
         <value>$LOCALIZE[19055]</value>
     </variable>
 
+    <!-- Real file name of a plugin stream (published by service.metadataenhancer); Player.Filename is the plugin link's last part, e.g. "history" -->
+    <variable name="Label_OSD_Filename">
+        <value condition="!String.IsEmpty(Window(Home).Property(MetadataEnhancer.Filename))">$INFO[Window(Home).Property(MetadataEnhancer.Filename)]</value>
+        <value>$INFO[Player.Filename]</value>
+    </variable>
+
     <variable name="Label_OSD_Header">
         <value condition="!String.IsEmpty(PVR.ChannelNumberInput)">$INFO[PVR.ChannelNumberInput,$LOCALIZE[19165] ,]</value>
         <value condition="!String.IsEmpty(Player.SeekNumeric)">$INFO[Player.SeekNumeric,$LOCALIZE[31233] ,]</value>
