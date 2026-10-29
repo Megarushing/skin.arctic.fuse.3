@@ -56,7 +56,7 @@
                                     <label>$VAR[Label_OSD_Header]</label>
                                 </control>
                                 <control type="label" id="8293">
-                                    <visible>!String.IsEmpty(Player.Filename)</visible>
+                                    <visible>!String.IsEmpty(Player.Filename) | [String.StartsWith(Player.FilenameAndPath,plugin://) + !String.IsEmpty(Window(Home).Property(MetadataEnhancer.Filename))]</visible>
                                     <width>100%</width>
                                     <top>818</top>
                                     <height>40</height>
