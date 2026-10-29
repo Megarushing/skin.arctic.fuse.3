@@ -90,6 +90,17 @@
                     </include>
                 </control>
 
+                <!-- Use the skin's current-player artwork, never the highlighted browser item. -->
+                <control type="image" id="8294">
+                    <visible>Player.HasVideo + [!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.CropImage)) | !String.IsEmpty(Player.Art(clearlogo)) | !String.IsEmpty(Player.Art(tvshow.clearlogo)) | !String.IsEmpty(Player.Art(artist.clearlogo))]</visible>
+                    <left>view_pad</left>
+                    <top>40</top>
+                    <width>480</width>
+                    <height>80</height>
+                    <aspectratio align="left" aligny="center">keep</aspectratio>
+                    <texture background="true">$VAR[Image_OSD_Clearlogo]</texture>
+                </control>
+
                 <include content="Furniture_Header">
                     <param name="include_left">false</param>
                     <param name="textcolor">panel_fg_90</param>
