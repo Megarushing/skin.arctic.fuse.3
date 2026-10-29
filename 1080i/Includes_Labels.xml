@@ -596,9 +596,10 @@
         <value>$LOCALIZE[19055]</value>
     </variable>
 
-    <!-- Real file name of a plugin stream (published by service.metadataenhancer); Player.Filename is the plugin link's last part, e.g. "history" -->
+    <!-- Player.Filename as before; only for plugin streams (where it is the link's last part, e.g. "history")
+         use the real file name published by service.metadataenhancer, when there is one -->
     <variable name="Label_OSD_Filename">
-        <value condition="!String.IsEmpty(Window(Home).Property(MetadataEnhancer.Filename))">$INFO[Window(Home).Property(MetadataEnhancer.Filename)]</value>
+        <value condition="String.StartsWith(Player.FilenameAndPath,plugin://) + !String.IsEmpty(Window(Home).Property(MetadataEnhancer.Filename))">$INFO[Window(Home).Property(MetadataEnhancer.Filename)]</value>
         <value>$INFO[Player.Filename]</value>
     </variable>
 
