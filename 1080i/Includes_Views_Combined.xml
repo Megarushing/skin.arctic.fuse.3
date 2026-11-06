@@ -165,7 +165,6 @@
                             <param name="h">view_poster_item_h</param>
                         </include>
 
-                        <onup>SetFocus(53$PARAM[id],0,absolute)</onup>
                         <onup>52$PARAM[id]</onup>
 
                         <include content="Action_View_Movement_OnDown">
