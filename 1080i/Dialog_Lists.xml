@@ -274,6 +274,17 @@
         </definition>
     </include>
 
+    <!-- Basic item with the widget_style property, showing its style -->
+    <include name="List_Layout_Dialog_WidgetStyle">
+        <param name="selected">false</param>
+        <definition>
+            <include content="Layout_DialogBasic">
+                <param name="selected">$PARAM[selected]</param>
+                <param name="label2">$VAR[Label_Widget_Style]</param>
+            </include>
+        </definition>
+    </include>
+
     <include name="List_Layout_Dialog_GameDiscs">
         <param name="selected">false</param>
         <param name="detailed">false</param>
@@ -528,6 +539,19 @@
                 </control>
                 <control type="group">
                     <left>60</left>
+                    <control type="group">
+                        <description>RetroAchievements frames a badge earned in hardcore in gold</description>
+                        <width>$PARAM[item_h]</width>
+                        <visible>!String.IsEmpty(ListItem.Property(achievement.hardcore))</visible>
+                        <control type="group">
+                            <include>Part_List_Icon_Padding</include>
+                            <control type="image">
+                                <bordersize>-3</bordersize>
+                                <aspectratio>keep</aspectratio>
+                                <texture colordiffuse="gold" border="20">common/box.png</texture>
+                            </control>
+                        </control>
+                    </control>
                     <include content="Part_List_Icon">
                         <param name="item_h">$PARAM[item_h]</param>
                         <param name="selected">$PARAM[selected]</param>
