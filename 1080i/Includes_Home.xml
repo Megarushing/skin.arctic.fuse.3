@@ -48,7 +48,6 @@
     <!-- Discover sources from TMDbHelper follow the search widgets unless they are turned off in the search hub settings -->
     <variable name="Value_MultiSearch_Discover_Param">
         <value condition="Skin.HasSetting(HomeSwitcher.Search.DisableDiscover)">,no_discover</value>
-        <value>,trakt_discover</value><!-- Trakt Discover source from our script.skinvariables fork -->
     </variable>
 
     <!-- Standard shows a results row for each content type. Combined fills source list 200 instead, with all results
