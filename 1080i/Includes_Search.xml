@@ -344,6 +344,12 @@
                 <param name="id">106</param>
                 <label>$LOCALIZE[13007]</label>
             </include>
+            <!-- Opens the TMDbHelper Trakt Discover editor; the Trakt Discover source searches again with the saved filters -->
+            <include content="MultiSearch_Button">
+                <param name="id">110</param>
+                <label>Trakt Discover ⌄</label>
+                <visible>!Skin.HasSetting(HomeSwitcher.Search.DisableDiscover)</visible>
+            </include>
         </include>
         <include content="MultiSearch_Button_Row">
             <param name="top">410</param>
